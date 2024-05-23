@@ -18,7 +18,7 @@ const ItemCard = () => {
           subHeading={"CHEF RECOMMENDS"}
         />
       </div>
-      <div className="grid grid-cols-3 max-sm:grid-cols-1 py-9 font-inter">
+      <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
         {menu.slice(0, 3).map((item) => (
           <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
             <figure>

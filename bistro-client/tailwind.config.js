@@ -10,6 +10,7 @@ export default {
       },
       backgroundImage: {
         aboutBistro: "url('./src/assets/home/chef-service.jpg')",
+        feauterdBg: "url('./src/assets/home/featured.jpg')",
       },
     },
   },

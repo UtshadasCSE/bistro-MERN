@@ -3,7 +3,7 @@ const MenuItem = ({ item }) => {
 
   return (
     <div>
-      <div className="flex gap-7 font-inter">
+      <div className="flex max-sm:flex-col gap-7 font-inter max-sm:w-4/5 mx-auto">
         <div>
           <img
             className="rounded-full rounded-tl-none w-44 "

@@ -87,7 +87,7 @@ const Navbar = () => {
                 {navLinks}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl font-inter font-black">
+            <a className="btn btn-ghost text-xl font-cinzel font-black">
               Bistro Boss
             </a>
           </div>
