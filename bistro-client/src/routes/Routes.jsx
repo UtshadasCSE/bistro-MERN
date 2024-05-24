@@ -4,11 +4,15 @@ import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Menu/Menu";
 import Shop from "../pages/Shop/Shop";
 import Order from "../pages/Order/Order";
+import Contact from "../pages/Contact/Contact";
+import Errorpage from "../pages/Errorpage/Errorpage";
+import Login from "../pages/Home/Login/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Errorpage />,
     children: [
       {
         path: "/",
@@ -19,12 +23,20 @@ const router = createBrowserRouter([
         element: <Menu />,
       },
       {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
         path: "/shop",
         element: <Shop />,
       },
       {
         path: "/cart",
         element: <Order />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

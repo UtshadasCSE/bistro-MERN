@@ -11,15 +11,16 @@ import { Navigation } from "swiper/modules";
 
 import "./testimonial.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Testimonial = () => {
   const [reviwes, setReviews] = useState([]);
   useEffect(() => {
-    fetch("reviews.json")
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
+    axios
+      .get("http://localhost:3000/reviews")
+      .then((data) => setReviews(data.data));
   }, []);
-  console.log(reviwes);
+
   return (
     <div>
       <div>

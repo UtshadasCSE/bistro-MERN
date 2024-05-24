@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -95,7 +95,12 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1 max-sm:hidden">
               {navLinks}
             </ul>
-            <a className="btn">GET STARTED</a>
+            <Link
+              to={"/login"}
+              className="btn btn-outline  text-white font-semibold border-[#EEFF25]"
+            >
+              GET STARTED
+            </Link>
           </div>
         </div>
       </nav>

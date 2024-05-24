@@ -11,6 +11,10 @@ export default {
       backgroundImage: {
         aboutBistro: "url('./src/assets/home/chef-service.jpg')",
         feauterdBg: "url('./src/assets/home/featured.jpg')",
+        loginBg: 'url("./src/assets/others/authentication.png")',
+      },
+      colors: {
+        loginBtn: "rgba(209, 160, 84, 0.70)",
       },
     },
   },
