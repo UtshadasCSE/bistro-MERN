@@ -12,6 +12,11 @@ const Shop = () => {
   const soupItem = menu.filter((item) => item.category === "soup");
   const dessertItem = menu.filter((item) => item.category === "dessert");
   const drinkItem = menu.filter((item) => item.category === "drinks");
+
+  // Pagination for every tab
+  const itemPerPgae = 10;
+  const numOfPage = Math.ceil(saladItem / itemPerPgae);
+  console.log(numOfPage);
   return (
     <div>
       <Helmet>
@@ -36,7 +41,10 @@ const Shop = () => {
           <TabPanel>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
               {saladItem.map((item) => (
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                <div
+                  key={item._id}
+                  className="relative card w-96 bg-base-100 shadow-xl"
+                >
                   <figure>
                     <img src={item.image} alt="" />
                   </figure>
@@ -49,14 +57,29 @@ const Shop = () => {
                       </button>
                     </div>
                   </div>
+                  <div className="absolute right-3 top-4  ">
+                    <h3 className="bg-[#111827] text-white text-xl font-semibold p-3 rounded-md">
+                      ${item.price}
+                    </h3>
+                  </div>
                 </div>
               ))}
+            </div>
+            {/* pageniation  */}
+            <div className="join">
+              <button className="join-item btn">1</button>
+              <button className="join-item btn btn-active">2</button>
+              <button className="join-item btn">3</button>
+              <button className="join-item btn">4</button>
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
               {pizzaItem.map((item) => (
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                <div
+                  key={item._id}
+                  className="relative card w-96 bg-base-100 shadow-xl"
+                >
                   <figure>
                     <img src={item.image} alt="" />
                   </figure>
@@ -68,6 +91,11 @@ const Shop = () => {
                         ADD TO CART
                       </button>
                     </div>
+                  </div>
+                  <div className="absolute right-3 top-4  ">
+                    <h3 className="bg-[#111827] text-white text-xl font-semibold p-3 rounded-md">
+                      ${item.price}
+                    </h3>
                   </div>
                 </div>
               ))}
@@ -76,7 +104,10 @@ const Shop = () => {
           <TabPanel>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
               {soupItem.map((item) => (
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                <div
+                  key={item._id}
+                  className="relative card w-96 bg-base-100 shadow-xl"
+                >
                   <figure>
                     <img src={item.image} alt="" />
                   </figure>
@@ -88,6 +119,11 @@ const Shop = () => {
                         ADD TO CART
                       </button>
                     </div>
+                  </div>
+                  <div className="absolute right-3 top-4  ">
+                    <h3 className="bg-[#111827] text-white text-xl font-semibold p-3 rounded-md">
+                      ${item.price}
+                    </h3>
                   </div>
                 </div>
               ))}
@@ -96,7 +132,10 @@ const Shop = () => {
           <TabPanel>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
               {dessertItem.map((item) => (
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                <div
+                  key={item._id}
+                  className="relative card w-96 bg-base-100 shadow-xl"
+                >
                   <figure>
                     <img src={item.image} alt="" />
                   </figure>
@@ -109,6 +148,11 @@ const Shop = () => {
                       </button>
                     </div>
                   </div>
+                  <div className="absolute right-3 top-4  ">
+                    <h3 className="bg-[#111827] text-white text-xl font-semibold p-3 rounded-md">
+                      ${item.price}
+                    </h3>
+                  </div>
                 </div>
               ))}
             </div>
@@ -116,7 +160,10 @@ const Shop = () => {
           <TabPanel>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 py-9 font-inter">
               {drinkItem.map((item) => (
-                <div key={item._id} className="card w-96 bg-base-100 shadow-xl">
+                <div
+                  key={item._id}
+                  className="relative card w-96 bg-base-100 shadow-xl"
+                >
                   <figure>
                     <img src={item.image} alt="" />
                   </figure>
@@ -128,6 +175,11 @@ const Shop = () => {
                         ADD TO CART
                       </button>
                     </div>
+                  </div>
+                  <div className="absolute right-3 top-4  ">
+                    <h3 className="bg-[#111827] text-white text-xl font-semibold p-3 rounded-md">
+                      ${item.price}
+                    </h3>
                   </div>
                 </div>
               ))}
