@@ -5,18 +5,45 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
   const [disabled, setDidisabled] = useState(true);
   const captchaValue = useRef(null);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+  // get input from Form
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   //match captcha
   const handleCaptchaMatch = () => {
     const user_captcha_value = captchaValue.current.value;
-    console.log(user_captcha_value);
 
     if (validateCaptcha(user_captcha_value)) {
       setDidisabled(false);
@@ -33,12 +60,16 @@ const Login = () => {
               <Lottie animationData={animationData} />
             </div>
             <div className="card shrin k-0 w-full max-w-sm shadow-2xl  ">
-              <form className="card-body">
+              <form onSubmit={handleFormSubmit} className="card-body">
+                <h2 className="text-center text-2xl font-black font-inter">
+                  Login
+                </h2>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
                   <input
+                    name="email"
                     type="email"
                     placeholder="email"
                     className="input input-bordered"
@@ -51,7 +82,8 @@ const Login = () => {
                     <span className="label-text">Password</span>
                   </label>
                   <input
-                    type="text"
+                    name="password"
+                    type="password"
                     placeholder="password"
                     className="input input-bordered"
                     required
@@ -83,6 +115,17 @@ const Login = () => {
                   >
                     Login
                   </button>
+                </div>
+                <div className="py-3 text-[#D1A054] font-inter">
+                  <p>
+                    Dont have an account?{" "}
+                    <Link
+                      to={"/register"}
+                      className="font-bold hover:underline cursor-pointer"
+                    >
+                      Register Now
+                    </Link>
+                  </p>
                 </div>
               </form>
             </div>

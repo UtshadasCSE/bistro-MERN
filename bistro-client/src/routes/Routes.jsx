@@ -7,6 +7,7 @@ import Order from "../pages/Order/Order";
 import Contact from "../pages/Contact/Contact";
 import Errorpage from "../pages/Errorpage/Errorpage";
 import Login from "../pages/Home/Login/Login";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Order />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/login",

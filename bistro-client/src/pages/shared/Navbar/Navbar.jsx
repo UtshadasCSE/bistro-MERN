@@ -1,7 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+  const handleLogoutBtn = () => {
+    logoutUser()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navLinks = (
     <>
       <li>
@@ -95,12 +114,26 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1 max-sm:hidden">
               {navLinks}
             </ul>
-            <Link
-              to={"/login"}
-              className="btn btn-outline  text-white font-semibold border-[#EEFF25]"
-            >
-              GET STARTED
-            </Link>
+            {user ? (
+              <>
+                <button
+                  onClick={handleLogoutBtn}
+                  className="btn btn-outline  text-white font-semibold border-[#EEFF25]"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                {" "}
+                <Link
+                  to={"/login"}
+                  className="btn btn-outline  text-white font-semibold border-[#EEFF25]"
+                >
+                  GET STARTED
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

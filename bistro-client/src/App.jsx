@@ -6,13 +6,14 @@ import Footer from "./pages/shared/Footer/Footer";
 function App() {
   const location = useLocation();
   const hideNavFoot = location.pathname.includes("/login");
+  const hideNavFooT = location.pathname.includes("/register");
   console.log(hideNavFoot);
   return (
     <>
       <div className="max-w-7xl mx-auto">
-        {hideNavFoot || <Navbar />}
+        {hideNavFoot || hideNavFooT || <Navbar />}
         <Outlet />
-        {hideNavFoot || <Footer />}
+        {hideNavFoot || hideNavFooT || <Footer />}
       </div>
     </>
   );
